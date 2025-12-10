@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio PS 4.14 - Años Bisiestos y Números Perfectos</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicio PS 4.14 - Años Bisiestos y Números Perfectos</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 445</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="leap-perfect-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Arreglos</span>
+          <h2 id="leap-perfect-title">Filtrado Numérico Complejo</h2>
+          
+          <p class="exercise-description">
+            Lógica matemática y almacenamiento.
+            <br><br>
+            Este problema es un reto interesante porque debes filtrar una secuencia de números (del 1 al 2020) basándote en dos criterios matemáticos distintos: calendarios (años bisiestos) y teoría de números (números perfectos). Los que cumplan <strong>cualquiera</strong> de las dos condiciones deben guardarse en una lista.
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/ps4.14.png" alt="Diagrama de Flujo - PS 4.14">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Construir un programa que analice todos los números entre el <strong>1 y el 2020</strong>. Debe identificar y almacenar en un arreglo unidimensional aquellos números que sean <strong>Bisiestos</strong> O <strong>Perfectos</strong>. Al finalizar el análisis, debe imprimir el contenido del arreglo.</p>
+            
+            <h3>Definiciones Matemáticas</h3>
+            <ul>
+              <li><strong>Año Bisiesto:</strong> Es divisible entre 4, pero NO es divisible entre 100, a menos que también sea divisible entre 400.</li>
+              <li><strong>Número Perfecto:</strong> Es aquel que es igual a la suma de sus divisores positivos (excluyéndose a sí mismo). <br><em>Ejemplo: El 6 es perfecto porque sus divisores son 1, 2 y 3, y 1+2+3 = 6.</em></li>
+            </ul>
+
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>RESULTADOS:</strong> Arreglo unidimensional de enteros (<code>int[]</code>). Dado que no sabemos cuántos serán, define un tamaño seguro (ej. 600 posiciones).</li>
+              <li><strong>COUNT:</strong> tipo entero (<code>int</code>) - Índice para controlar en qué posición del arreglo guardamos el siguiente número encontrado.</li>
+              <li><strong>SUMA:</strong> tipo entero (<code>int</code>) - Variable auxiliar para sumar los divisores al verificar si es perfecto.</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ol>
+              <li>Inicializar el contador <code>COUNT = 0</code>.</li>
+              <li>Iniciar un ciclo desde <code>N = 1</code> hasta <code>2020</code>.</li>
+              <li>En cada vuelta, verificar dos condiciones:
+                <ul>
+                  <li><strong>¿Es Bisiesto?</strong>: <code>(N % 4 == 0) && (N % 100 != 0 || N % 400 == 0)</code></li>
+                  <li><strong>¿Es Perfecto?</strong>: Calcular la suma de sus divisores (bucle interno) y ver si <code>SUMA == N</code>.</li>
+                </ul>
+              </li>
+              <li>Si se cumple <strong>cualquiera</strong> de las dos (OR), guardar <code>N</code> en <code>RESULTADOS[COUNT]</code> e incrementar <code>COUNT</code>.</li>
+              <li>Al terminar el ciclo principal, imprimir el arreglo (solo las posiciones llenas, de 0 a <code>COUNT-1</code>).</li>
+            </ol>
+
+            <h3>Resultado Esperado (Fragmento)</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">--- Analisis completado ---
+Numeros encontrados (Bisiestos o Perfectos):
+4
+6
+8
+12
+16
+20
+...
+2016
+2020</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li><strong>Optimización:</strong> Para verificar si un número es perfecto, necesitas un bucle interno que busque divisores desde 1 hasta <code>N/2</code>.</li>
+              <li><strong>Lógica OR (||):</strong> El problema pide almacenar números que sean bisiestos <strong>Y</strong> perfectos (en el sentido de "ambos grupos", unión de conjuntos). Si un número cumple una condición, ya entra en la lista; no necesita cumplir las dos.</li>
+              <li><strong>Arreglos parcialmente llenos:</strong> Tu arreglo tendrá espacio para 600 números, pero quizás encuentres menos (ej. 500). Es vital usar la variable <code>COUNT</code> para saber hasta dónde imprimir y no mostrar los ceros vacíos del final.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Arreglos</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio PS 4.30 - Sistema de Reservas de Teatro</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicio PS 4.30 - Sistema de Reservas de Teatro</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 452</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="theater-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Arreglos</span>
+          <h2 id="theater-title">Gestión de Asientos con Matrices</h2>
+          
+          <p class="exercise-description">
+            Mapeo de coordenadas y validación de disponibilidad.
+            <br><br>
+            Este ejercicio simula un sistema de taquilla real. Utilizarás una <strong>Matriz (Arreglo Bidimensional)</strong> para representar el mapa de asientos de un teatro. El desafío técnico es traducir las coordenadas humanas (Fila 'A', Asiento 5) a coordenadas de programación (Índice [0][4]) y controlar que no se vendan lugares ocupados.
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/ps4.30.png" alt="Diagrama de Flujo - PS 4.30">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Crear un programa que gestione la venta de localidades. El teatro tiene filas marcadas de la <strong>A a la Z</strong> y cada fila tiene asientos numerados del <strong>1 al 10</strong>.</p>
+            <p>El sistema debe:</p>
+            <ol>
+              <li>Pedir al usuario la Fila y el Asiento deseado.</li>
+              <li>Verificar si está libre. Si está ocupado, debe volver a pedir otra ubicación hasta encontrar una libre.</li>
+              <li>Una vez validado el lugar, pedir el nombre del cliente para asignarlo.</li>
+              <li>Repetir el proceso para vender más boletos o terminar.</li>
+            </ol>
+            
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>TEATRO:</strong> Matriz de tipo <code>String</code> de tamaño [26][10]. <br><em>(26 letras del alfabeto x 10 asientos). Guardará el nombre del cliente o <code>null</code> si está libre.</em></li>
+              <li><strong>FILA_CHAR:</strong> tipo caracter (<code>char</code>) - La letra ingresada por el usuario (ej. 'C').</li>
+              <li><strong>ASIENTO:</strong> tipo entero (<code>int</code>) - El número ingresado por el usuario (1-10).</li>
+              <li><strong>NOMBRE:</strong> tipo cadena (<code>String</code>) - Nombre del cliente a registrar.</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ol>
+              <li>Inicializar la matriz <code>TEATRO</code> (en Java, los String inician en <code>null</code> automáticamente, lo cual indica "libre").</li>
+              <li>Iniciar un ciclo de ventas (puede ser infinito con opción de salida).</li>
+              <li><strong>Validación de Disponibilidad (Ciclo Interno):</strong>
+                <ul>
+                  <li>Solicitar Fila (letra) y Asiento (número).</li>
+                  <li>Convertir la letra a índice: <code>filaIndex = FILA_CHAR - 'A';</code> (Truco ASCII).</li>
+                  <li>Convertir el asiento a índice: <code>asientoIndex = ASIENTO - 1;</code>.</li>
+                  <li>Verificar si <code>TEATRO[filaIndex][asientoIndex]</code> es diferente de <code>null</code> (Ocupado). Si es así, mostrar error y repetir.</li>
+                </ul>
+              </li>
+              <li>Pedir el <code>NOMBRE</code> del cliente y asignarlo: <code>TEATRO[filaIndex][asientoIndex] = NOMBRE;</code>.</li>
+              <li>Confirmar la reserva exitosa.</li>
+            </ol>
+
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">--- TAQUILLA TEATRO ---
+Ingrese Fila (A-Z): A
+Ingrese Asiento (1-10): 5
+>> Lugar disponible.
+Ingrese nombre del cliente: Juan Perez
+¡Reserva exitosa para Juan Perez en A-5!
+
+--- NUEVA VENTA ---
+Ingrese Fila (A-Z): A
+Ingrese Asiento (1-10): 5
+>> Error: El asiento A-5 esta ocupado por Juan Perez. Por favor elija otro.
+Ingrese Fila (A-Z): ...</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Claves de implementación:</p>
+            <ul>
+              <li><strong>Mapeo de Caracteres:</strong> Los arreglos en Java usan índices numéricos (0, 1, 2...). Para usar letras, aprovechamos que los caracteres son números internamente (ASCII). La operación <code>'C' - 'A'</code> resulta en <code>2</code> (el índice correcto para la tercera fila).</li>
+              <li><strong>Índices Base-0:</strong> Recuerda restar 1 al número de asiento que ingresa el usuario. Si pide el asiento 1, en el arreglo es la columna 0.</li>
+              <li><strong>Validación:</strong> Es vital comprobar que la fila esté entre 'A' y 'Z' y el asiento entre 1 y 10 para evitar errores de <code>IndexOutOfBounds</code>.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes usar <code>Character.toUpperCase()</code> para que funcione igual si el usuario escribe 'a' o 'A'.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Arreglos</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

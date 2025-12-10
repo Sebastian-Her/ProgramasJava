@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 2.8 - Aumento Salarial por Categoría</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 2.8 - Aumento Salarial por Categoría</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 68</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 2.8</span>
+         <h2 id="aumento-salarial-title">Aumento Salarial por Categoría</h2>
+          
+          <p class="exercise-description">
+            Calculando el nuevo sueldo de un trabajador
+
+Hasta ahora tus programas seguían un solo camino (secuenciales). En este problema aprenderás a usar la estructura de control selectiva <code>switch</code> (interruptor). Esta estructura es ideal cuando tenemos un menú de opciones fijas, como en este caso, donde el aumento de sueldo depende exclusivamente de la categoría del empleado.
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/Ejemplo2.8.png" alt="Diagrama de Flujo - Ejemplo 2.8">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Crear un programa que ayude a calcular el aumento de sueldo de un trabajador. El programa debe solicitar la categoría del empleado (un número entero del 1 al 4) y su sueldo actual, para luego determinar cuánto aumentará su salario basándose en una tabla de porcentajes predefinida.</p>
+            
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>Categoria:</strong> tipo entero (<code>int</code>) - El nivel del trabajador (1, 2, 3 o 4).</li>
+              <li><strong>Sueldo:</strong> tipo real (<code>double</code>) - Cuánto gana actualmente.</li>
+              <li><strong>Aumento:</strong> tipo real (<code>double</code>) - El monto extra que recibirá.</li>
+              <li><strong>NuevoSueldo:</strong> tipo real (<code>double</code>) - La suma del sueldo actual más el aumento.</li>
+            </ul>
+
+            <h3>Tabla de Aumentos</h3>
+            <p>El porcentaje de aumento se decide según la siguiente tabla:</p>
+            <ul>
+              <li><strong>Categoría 1:</strong> 15% de aumento.</li>
+              <li><strong>Categoría 2:</strong> 10% de aumento.</li>
+              <li><strong>Categoría 3:</strong> 8% de aumento.</li>
+              <li><strong>Categoría 4:</strong> 7% de aumento.</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer la Categoría del trabajador.</li>
+              <li>Leer el Sueldo actual.</li>
+              <li>Usar una estructura <code>switch</code> basada en la Categoría:
+                <ul>
+                  <li>Si es 1, multiplicar sueldo por 0.15.</li>
+                  <li>Si es 2, multiplicar sueldo por 0.10.</li>
+                  <li>Si es 3, multiplicar sueldo por 0.08.</li>
+                  <li>Si es 4, multiplicar sueldo por 0.07.</li>
+                </ul>
+              </li>
+              <li>Sumar el Aumento al Sueldo original para obtener el NuevoSueldo.</li>
+              <li>Mostrar los resultados en pantalla.</li>
+            </ul>
+
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">Ingrese la categoría del trabajador (1-4): 1
+Ingrese el sueldo del trabajador: 1000.00
+
+--- RESULTADO ---
+Categoría del trabajador: 1
+Sueldo anterior: $1000.0
+Aumento: $150.0
+Nuevo sueldo: $1150.0</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos importantes para tu aprendizaje:</p>
+            <ul>
+              <li>¿Por qué <code>switch</code>? Podríamos usar muchos <code>if</code> anidados, pero <code>switch</code> es mucho más ordenado cuando comparamos una sola variable (categoría) contra valores exactos (1, 2, 3, 4).</li>
+              <li>La importancia del <code>break</code>: Dentro de cada caso (<code>case</code>) del <code>switch</code>, no olvides colocar la instrucción <code>break;</code>. Si la olvidas, el programa seguirá ejecutando los casos de abajo por accidente.</li>
+              <li>Manejo de errores: Es buena práctica incluir una opción <code>default</code> dentro del <code>switch</code> para avisar si el usuario ingresó una categoría que no existe (por ejemplo, categoría 5).</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Recuerda que para obtener el 15% de una cantidad, matemáticamente es lo mismo que multiplicar por <code>0.15</code>. No intentes multiplicar por 15 y dividir entre 100 dentro del código si puedes hacerlo directo, ¡es más limpio!
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Condicionales</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

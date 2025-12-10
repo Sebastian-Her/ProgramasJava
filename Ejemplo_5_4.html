@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 5.4 - Definición de un Registro de Empleado</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 5.4 - Definición de un Registro de Empleado</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 345</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="employee-title">Definición de un Registro de Empleado</h2>
+          <p class="exercise-description">Siguiendo con el tema de "Registros" (implementados como Clases en Java), ahora modelaremos una entidad más compleja: un Empleado, que requiere mezclar enteros, texto y números reales.</p>
+        </header>
+
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/Ejemplo5.4.png" alt="Diagrama de Flujo - Ejemplo 5.4">
+        </div>
+
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Definir una estructura de datos (Clase) llamada <code>Empleado</code> que contenga cinco campos específicos para almacenar la información laboral de una persona. Posteriormente, crear una variable de este tipo, llenar sus datos y mostrarlos en pantalla.</p>
+
+            <h3>Estructura del Registro (Campos)</h3>
+            <ul>
+              <li><strong>numero</strong>: <code>int</code> - El número o ID del empleado.</li>
+              <li><strong>nombre</strong>: <code>String</code> - El nombre completo de la persona.</li>
+              <li><strong>departamento</strong>: <code>String</code> - El área donde trabaja (ej. "Contabilidad").</li>
+              <li><strong>nivel</strong>: <code>int</code> - El rango o nivel jerárquico (ej. 1, 2, 3).</li>
+              <li><strong>sueldo</strong>: <code>double</code> - El salario mensual que percibe.</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ol>
+              <li>Definir la clase <code>Empleado</code> con los 5 campos mencionados.</li>
+              <li>En el método principal, declarar una variable llamada <code>emp</code>.</li>
+              <li>Asignar los siguientes valores de prueba (o los que prefieras):</li>
+            </ol>
+            <pre>
+Número: 1234
+Nombre: "Ricardo Gomez"
+Departamento: "Sistemas"
+Nivel: 3
+Sueldo: 10500.50
+            </pre>
+
+            <h3>Representación Gráfica</h3>
+            <pre class="formula-box">
+EMPLEADO
++-----------------------------------+
+| numero: 1234                      |
+| nombre: "Ricardo Gomez"           |
+| departamento: "Sistemas"          |
+| nivel: 3                          |
+| sueldo: 10500.50                  |
++-----------------------------------+
+            </pre>
+
+            <h3>Resultado Esperado</h3>
+            <pre>
+--- Datos del Empleado ---
+Numero: 1234
+Nombre: Ricardo Gomez
+Departamento: Sistemas
+Nivel: 3
+Sueldo: $10500.5
+            </pre>
+          </section>
+
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos importantes para tu aprendizaje:</p>
+            <ul>
+              <li><strong>Tipos de Datos:</strong> Observa cómo el registro actúa como un contenedor "híbrido".</li>
+              <li><strong>Orden de Declaración:</strong> Define la clase antes de crear la variable <code>emp</code>.</li>
+              <li><strong>Comparación con arreglos:</strong> Si usaras arreglos necesitarías 5 arreglos distintos y mantener índices sincronizados.</li>
+            </ul>
+
+            <h3>Tip</h3>
+            <p class="tip-box">Usa métodos descriptivos para mostrar los datos (p.ej. <code>toString()</code>) y formatea el sueldo con dos decimales cuando sea necesario.</p>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Registros</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

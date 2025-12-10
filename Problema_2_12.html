@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 2.12 - Cálculo de Horas Extras y Sueldo</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 2.12 - Cálculo de Horas Extras y Sueldo</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 99</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 2.12</span>
+         <h2 id="horas-extras-title">Cálculo de Horas Extras y Sueldo</h2>
+          
+          <p class="exercise-description">
+            Determinando el pago total de un trabajador
+
+En este ejercicio practicarás el uso de estructuras condicionales compuestas para resolver una situación de nómina real. Aprenderás a tomar decisiones basadas en tablas de valores (categorías) y a aplicar restricciones lógicas (límites de horas), algo muy común en la programación empresarial.
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/Problema2.12.png" alt="Diagrama de Flujo - Problema 2.12">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Crear un programa que calcule el sueldo total a pagar a un trabajador, sumando su sueldo base más el pago por horas extras. El precio de la hora extra depende de la categoría del empleado y existen reglas estrictas sobre cuántas horas se pueden pagar.</p>
+            
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>SUE:</strong> tipo real (<code>double</code>) - El sueldo base del trabajador.</li>
+              <li><strong>CATE:</strong> tipo entero (<code>int</code>) - La categoría del trabajador (1, 2, 3, 4, etc.).</li>
+              <li><strong>HE:</strong> tipo entero (<code>int</code>) - La cantidad de horas extras trabajadas.</li>
+              <li><strong>PHE:</strong> tipo real (<code>double</code>) - Precio por hora extra (variable auxiliar).</li>
+              <li><strong>NSUE:</strong> tipo real (<code>double</code>) - Nuevo sueldo total (Resultado final).</li>
+            </ul>
+
+            <h3>Reglas de Negocio</h3>
+            
+            <h4>Precio de Hora Extra:</h4>
+            <p>Se determina según la categoría:</p>
+            <ul>
+              <li>Categoría 1: $30</li>
+              <li>Categoría 2: $38</li>
+              <li>Categoría 3: $50</li>
+              <li>Categoría 4: $70</li>
+              <li>Categoría mayor a 4: $0 (No se pagan horas extras).</li>
+            </ul>
+
+            <h4>Límite de Horas:</h4>
+            <p>Cada trabajador puede tener como máximo 30 horas extras pagadas. Si trabajó más de 30 (ej. 40), solo se le pagarán 30.</p>
+
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer el sueldo base (SUE), la categoría (CATE) y las horas extras (HE).</li>
+              <li>Determinar el precio de la hora extra (PHE) usando una estructura <code>switch</code> o <code>if-else</code> basada en la categoría.</li>
+              <li>Validar la cantidad de horas:
+                <ul>
+                  <li>Si HE es mayor a 30, usar 30 para el cálculo.</li>
+                  <li>Si no, usar las horas reales.</li>
+                </ul>
+              </li>
+              <li>Calcular el pago total: NSUE = SUE + (Horas_Validas * PHE).</li>
+              <li>Mostrar el Nuevo Sueldo (NSUE).</li>
+            </ul>
+
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">Ingrese el sueldo base: 1350.00
+Ingrese la categoria (1-8): 1
+Ingrese las horas extras: 25
+
+--- RESULTADO ---
+El nuevo sueldo es: 2100.0
+(Explicación: Cat 1 paga $30. 25 horas * 30 = 750. Total = 1350 + 750 = 2100)</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos importantes para tu aprendizaje:</p>
+            <ul>
+              <li>Lógica de Topes: Este es un excelente ejercicio para aprender a poner "topes" o límites. Aunque el usuario ingrese 50 horas, tu código debe ser lo suficientemente inteligente para usar solo 30 en la multiplicación matemática si excede el límite.</li>
+              <li>Orden de condiciones: Primero determina cuánto vale la hora y después cuántas horas vas a pagar.</li>
+              <li>Categorías sin pago: Si la categoría es 5, 6, 7 u 8, el precio de la hora extra debe ser 0, por lo tanto, el sueldo nuevo será igual al sueldo base.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes usar una variable temporal (por ejemplo <code>cantHorasReales</code>) para guardar el número 30 si el usuario se pasó del límite, o usar el número que ingresó si es menor a 30. ¡No sobrescribas la variable original HE si quieres imprimir cuántas horas trabajó realmente vs. cuántas se le pagaron!
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Condicionales</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

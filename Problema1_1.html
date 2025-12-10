@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Problema 1.1 - Cálculo del Cambio de una Compra</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Problema 1.1 - Cálculo del Cambio de una Compra</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 37</p>
+    </header>
+
+    <main class="exercises-main">
+      <article id="employee" class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Problema 1.1</span>
+         <h2 id="sueldo-categoria-title">Cálculo del cambio a entregar a un cliente</h2>
+          
+          <p class="exercise-description">
+            En este problema realizarás tu primera operación matemática básica en Java (una resta) para simular una caja registradora sencilla. Aprenderás cómo declarar variables para manejar valores monetarios y mostrar el resultado final en la consola.
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/Problema1.1.png" alt="Diagrama de Flujo - Problema 1.1">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Crear un programa que calcule el cambio a entregar a un cliente después de una compra. El programa debe restar el monto pagado del total de la compra para determinar cuánto dinero debe devolverse.</p>
+            
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>totalCompra:</strong> (tipo <code>double</code>) - Monto total de la compra</li>
+              <li><strong>montoPagado:</strong> (tipo <code>double</code>) - Dinero entregado por el cliente</li>
+              <li><strong>cambio:</strong> (tipo <code>double</code>) - Cambio a entregar (montoPagado - totalCompra)</li>
+            </ul>
+            
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Leer el total de la compra.</li>
+              <li>Leer el monto pagado por el cliente.</li>
+              <li>Calcular el cambio realizando una resta.</li>
+              <li>Mostrar el cambio en la consola.</li>
+            </ul>
+            
+            <h3>Fórmula de Cálculo</h3>
+            <div class="formula-box" style="border-left: 4px solid #0066cc; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+              <p><code>Cambio = Pago - Costo</code></p>
+              <p style="font-size: 0.9em; color: #666;">Donde: Cambio es el dinero a regresar, Pago es el billete o moneda del cliente, y Costo es el precio del artículo.</p>
+            </div>
+            
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">Ingrese el costo del articulo: 20.50
+Ingrese con cuanto paga: 50.00
+El cambio a devolver es: 29.50</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos importantes:</p>
+            <ul>
+              <li>Se utilizan variables de tipo <code>double</code> porque los precios suelen tener decimales (centavos).</li>
+              <li>Este ejercicio asume que el Pago siempre es mayor o igual al Costo (no se requiere validar errores todavía).</li>
+              <li>Es necesario importar la clase <code>java.util.Scanner</code> antes de declarar la clase principal para poder leer los datos del teclado.</li>
+              <li>El flujo del programa es secuencial: se ejecuta una instrucción tras otra en orden descendente.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Al ingresar los datos en la consola, asegúrate de usar el punto (.) para los decimales (ejemplo: 50.0) en lugar de la coma, ya que la configuración estándar de Java suele esperar este formato para los números reales.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Básicos</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

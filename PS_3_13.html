@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicio PS 3.13 - Clasificación de Calificaciones por Rangos</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicio PS 3.13 - Clasificación de Calificaciones por Rangos</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 422</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="ranges-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ciclos</span>
+          <h2 id="ranges-title">Frecuencia de Calificaciones</h2>
+          
+          <p class="exercise-description">
+            Clasificando datos en grupos.
+            <br><br>
+            En este problema aprenderás a realizar una "distribución de frecuencias". A menudo no nos interesa el promedio, sino saber cuántas personas están en cierto nivel (reprobados, regulares, excelentes). Utilizarás un ciclo con valor centinela (-1) y múltiples contadores condicionales.
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/ps3.13.png" alt="Diagrama de Flujo - PS 3.13">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Crear un programa que lea una serie de calificaciones de un examen de computación. El programa debe terminar cuando el usuario ingrese <strong>-1</strong>. Al final, debe imprimir cuántas calificaciones cayeron en cada uno de los siguientes rangos:</p>
+            <ul>
+              <li><strong>Rango 1:</strong> 0 a 3.99 (Reprobado bajo)</li>
+              <li><strong>Rango 2:</strong> 4 a 5.99 (Reprobado alto)</li>
+              <li><strong>Rango 3:</strong> 6 a 7.99 (Aprobado regular)</li>
+              <li><strong>Rango 4:</strong> 8 a 10 (Excelente)</li>
+            </ul>
+            
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>CAL:</strong> tipo real (<code>double</code>) - La calificación que se ingresa en cada vuelta.</li>
+              <li><strong>R1, R2, R3, R4:</strong> tipo entero (<code>int</code>) - Cuatro contadores distintos, uno para cada rango. Deben iniciar en 0.</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ol>
+              <li>Inicializar los 4 contadores en cero.</li>
+              <li>Leer la primera calificación <code>CAL</code>.</li>
+              <li>Iniciar un ciclo <strong>mientras</strong> <code>CAL != -1</code>:
+                <ul>
+                  <li>Validar en qué rango cae la calificación usando <code>if / else if</code>.</li>
+                  <li>Incrementar el contador correspondiente (ej. <code>R1++</code>).</li>
+                  <li>Leer la siguiente calificación <code>CAL</code> (¡Muy importante para no crear un ciclo infinito!).</li>
+                </ul>
+              </li>
+              <li>Al recibir el -1, el ciclo termina. Imprimir los totales de los 4 contadores.</li>
+            </ol>
+
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">Ingrese calificacion (-1 para terminar): 5.5
+Ingrese calificacion (-1 para terminar): 9
+Ingrese calificacion (-1 para terminar): 3.2
+Ingrese calificacion (-1 para terminar): 8.5
+Ingrese calificacion (-1 para terminar): 10
+Ingrese calificacion (-1 para terminar): 7
+Ingrese calificacion (-1 para terminar): -1
+
+--- ESTADISTICAS ---
+Rango 0 - 3.99 : 1
+Rango 4 - 5.99 : 1
+Rango 6 - 7.99 : 1
+Rango 8 - 10   : 3</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos clave:</p>
+            <ul>
+              <li><strong>Centinela (-1):</strong> No sabemos cuántos alumnos son. Usamos el -1 como señal de alto. Asegúrate de no contar el -1 como una calificación válida.</li>
+              <li><strong>Lógica de Rangos:</strong> Usa condiciones estrictas. Por ejemplo, para el segundo rango: <code>if (cal >= 4 && cal <= 5.99)</code>.</li>
+              <li><strong>Doble Lectura:</strong> Recuerda el patrón estándar de los ciclos <code>while</code>: leer una vez antes del ciclo y otra vez al final, dentro del ciclo.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Puedes validar también que la calificación no sea mayor a 10 ni menor a 0 (excepto el -1) para evitar datos basura.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Ciclos</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 4.13 - Cálculo de Estadísticas Escolares</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 4.13 - Cálculo de Estadísticas Escolares</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 265</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 4.13</span>
+         <h2 id="estadisticas-title">Cálculo de Estadísticas Escolares</h2>
+          
+          <p class="exercise-description">
+            Analizando el desempeño de un grupo
+
+Los arreglos son ideales para guardar datos históricos, como las calificaciones de un examen de admisión, y luego procesarlos para obtener estadísticas. En este ejercicio, no solo calcularás un promedio, sino medidas más avanzadas como la varianza, la desviación estándar y la moda (el valor que más se repite).
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/Ejemplo4.13.png" alt="Diagrama de Flujo - Ejemplo 4.13">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Crear un programa que solicite el número de alumnos (N) y sus calificaciones. Posteriormente, deberá calcular e imprimir:</p>
+            <ul>
+              <li>La <strong>Media Aritmética:</strong> El promedio del grupo.</li>
+              <li>La <strong>Varianza:</strong> Una medida de qué tan dispersos están los datos respecto al promedio.</li>
+              <li>La <strong>Desviación Estándar:</strong> La raíz cuadrada de la varianza.</li>
+              <li>La <strong>Moda:</strong> La calificación que más se repite en el grupo.</li>
+            </ul>
+            
+            <h3>Variables a Declarar</h3>
+            <ul>
+              <li><strong>N:</strong> tipo entero (<code>int</code>) - Número de alumnos (máximo 50).</li>
+              <li><strong>A:</strong> Arreglo unidimensional de tipo entero (<code>int[]</code>) - Para guardar las calificaciones.</li>
+              <li><strong>MEDIA:</strong> tipo real (<code>double</code>) - El promedio aritmético.</li>
+              <li><strong>VARI:</strong> tipo real (<code>double</code>) - La varianza calculada.</li>
+              <li><strong>DESVIACION:</strong> tipo real (<code>double</code>) - La desviación estándar.</li>
+              <li><strong>MODA:</strong> tipo entero (<code>int</code>) - La calificación más frecuente.</li>
+            </ul>
+
+            <h3>Fórmulas y Operaciones</h3>
+            
+            <h4>Media:</h4>
+            <p>Suma todos los elementos y divide entre N.</p>
+            
+            <h4>Varianza:</h4>
+            <p>Se calcula sumando el cuadrado de la diferencia entre cada calificación y la media, dividido entre N:</p>
+            <div class="formula-box" style="border-left: 4px solid #0066cc; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+              <p style="text-align: center;">\[Varianza = \frac{\sum (A[i] - Media)^2}{N}\]</p>
+            </div>
+            
+            <h4>Desviación Estándar:</h4>
+            <p>Es simplemente la raíz cuadrada de la varianza:</p>
+            <div class="formula-box" style="border-left: 4px solid #0066cc; padding: 15px; margin: 10px 0; background: #f9f9f9;">
+              <p style="text-align: center;">\[Desviacion = \sqrt{Varianza}\]</p>
+            </div>
+            
+            <h4>Moda:</h4>
+            <p>Debes contar cuántas veces aparece cada calificación (del 0 al 10) y determinar cuál tiene la frecuencia más alta.</p>
+
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">Ingrese el numero de alumnos: 12
+Ingrese las calificaciones: 10 5 7 7 8 6 9 7 9 7 5 7
+
+--- RESULTADOS ---
+Media aritmetica: 7.25
+Varianza: 2.1875
+Desviacion estandar: 1.479
+Moda: 7</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos importantes para tu aprendizaje:</p>
+            <ul>
+              <li>Dos Pasos: Para calcular la varianza, primero necesitas tener la media calculada. Esto significa que probablemente necesitarás recorrer el arreglo dos veces: una para sumar y sacar el promedio, y otra para calcular las diferencias al cuadrado.</li>
+              <li>Frecuencias: Para calcular la Moda de forma eficiente, te sugiero usar un segundo arreglo auxiliar (por ejemplo, <code>int[] frecuencias = new int[11]</code>) donde el índice represente la calificación (0-10) y el valor sea cuántas veces apareció.</li>
+              <li>Raíz Cuadrada: Recuerda usar <code>Math.sqrt()</code> para la desviación estándar y <code>Math.pow(base, 2)</code> para elevar al cuadrado.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Las estadísticas son fundamentales en la ciencia de datos. Este ejercicio te introduce a conceptos que usarás toda tu vida si trabajas en análisis de datos, investigación o machine learning.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Arreglos</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

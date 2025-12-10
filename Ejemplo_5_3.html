@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejemplo 5.3 - Creación de un Registro "Domicilio"</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+  <style>
+    .diagram-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      margin: 20px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      transition: all 0.3s ease;
+    }
+    .diagram-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+    }
+    .diagram-button:active {
+      transform: translateY(0);
+    }
+    .diagram-container {
+      display: none;
+      margin: 20px 0;
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .diagram-container.show {
+      display: block;
+      animation: fadeIn 0.3s ease-in;
+    }
+    .diagram-container img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejemplo 5.3 - Creación de un Registro "Domicilio"</h1>
+      <p class="subtitle">Programación Estructurada en Java - Página 345</p>
+    </header>
+
+    <main class="exercises-main">
+      <article class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo 5.3</span>
+         <h2 id="domicilio-registro-title">Creación de un Registro "Domicilio"</h2>
+          
+          <p class="exercise-description">
+            Agrupando datos de diferentes tipos
+
+Hasta ahora, si querías guardar varios datos, usabas un Arreglo, pero tenías la limitante de que todos debían ser del mismo tipo (todos enteros o todos reales). ¿Qué pasa si queremos guardar la información de una dirección física, que mezcla texto y números? Aquí es donde entran los Registros (en Java los implementamos mediante Clases sencillas).
+          </p>
+        </header>
+        
+        <button class="diagram-button" onclick="toggleDiagram()">
+          📊 Ver Diagrama de Flujo
+        </button>
+        
+        <div id="diagram-container" class="diagram-container">
+          <img src="img/Ejemplo5.3.png" alt="Diagrama de Flujo - Ejemplo 5.3">
+        </div>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Objetivo</h3>
+            <p>Definir una estructura de datos personalizada llamada Domicilio que permita agrupar cuatro piezas de información relacionadas entre sí. Posteriormente, deberás crear una variable de este tipo, asignarle valores y mostrarlos en pantalla.</p>
+            
+            <h3>Estructura del Registro (Campos)</h3>
+            <p>Debes definir un "molde" o clase que contenga las siguientes variables internas (campos):</p>
+            <ul>
+              <li><strong>calle:</strong> tipo cadena (<code>String</code>) - Para el nombre de la calle.</li>
+              <li><strong>numero:</strong> tipo entero (<code>int</code>) - Para el número exterior.</li>
+              <li><strong>ciudad:</strong> tipo cadena (<code>String</code>) - Para la ciudad.</li>
+              <li><strong>pais:</strong> tipo cadena (<code>String</code>) - Para el país.</li>
+            </ul>
+
+            <h3>Operaciones a Realizar</h3>
+            <ul>
+              <li>Definir la <code>class Domicilio</code> con los 4 campos mencionados (dentro de tu código).</li>
+              <li>En el método principal (<code>main</code>), crear una variable (objeto) de tipo Domicilio.</li>
+              <li>Asignar los siguientes valores de prueba a esa variable:
+                <ul>
+                  <li>Calle: "Av. Reforma"</li>
+                  <li>Número: 222</li>
+                  <li>Ciudad: "CDMX"</li>
+                  <li>País: "Mexico"</li>
+                </ul>
+              </li>
+              <li>Imprimir los datos accediendo a cada campo (ejemplo: <code>miDomicilio.calle</code>).</li>
+            </ul>
+
+            <h3>Representación Gráfica</h3>
+            <p>Imagina que estás creando una "ficha" o tarjeta que se ve así:</p>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">DOMICILIO
++-----------------------+
+| calle: "Av. Reforma"  |
+| numero: 222           |
+| ciudad: "CDMX"        |
+| pais: "Mexico"        |
++-----------------------+</pre>
+
+            <h3>Resultado Esperado</h3>
+            <pre style="background: #f5f5f5; padding: 10px; border-left: 3px solid #0066cc; margin: 10px 0;">Datos del Domicilio:
+Calle: Av. Reforma
+Numero: 222
+Ciudad: CDMX
+Pais: Mexico</pre>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas Rápidas</h3>
+            <p class="note-text">Puntos importantes para tu aprendizaje:</p>
+            <ul>
+              <li>El concepto de "Punto": Para acceder a los datos dentro de un registro, usamos el operador punto (.). Por ejemplo, si tu variable se llama casa, para ver la calle escribes <code>casa.calle</code>.</li>
+              <li>Clases en Java: En Java, no existe la palabra clave <code>struct</code> o <code>record</code> (en versiones antiguas). Para simular un registro de programación estructurada, creamos una <code>class</code> que solo tenga variables públicas, sin métodos complejos.</li>
+              <li>Tipos Mixtos: Fíjate cómo ahora podemos mezclar <code>String</code> e <code>int</code> en una sola entidad. ¡Esa es la potencia de los registros!</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Los registros (o structs simples) son la puerta de entrada a la Programación Orientada a Objetos (POO). Una vez domines registros, estarás listo para aprender sobre métodos, constructores y herencia.
+            </div>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Problema de Programación Estructurada en Java - Registros</p>
+    </footer>
+  </div>
+  
+  <script>
+    function toggleDiagram() {
+      const container = document.getElementById('diagram-container');
+      const button = document.querySelector('.diagram-button');
+      
+      if (container.classList.contains('show')) {
+        container.classList.remove('show');
+        button.textContent = '📊 Ver Diagrama de Flujo';
+      } else {
+        container.classList.add('show');
+        button.textContent = '📊 Ocultar Diagrama de Flujo';
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ejercicios de Programación Estructurada en Java</title>
+  <link rel="stylesheet" href="style/styles_desc.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Ejercicios de Programación Estructurada en Java</h1>
+      <p class="subtitle">Selecciona un ejercicio del menú para ver los detalles.</p>
+    </header>
+
+    <nav class="exercises-nav" aria-label="Navegación de ejercicios">
+      <a href="#employee" class="nav-link">Ejemplo 2.8</a>
+      <a href="#person" class="nav-link">Problema 2.12</a>
+      <a href="#point2d" class="nav-link">Problema 3.9</a>
+      <a href="#freqtable" class="nav-link">Ejemplo 4.6</a>
+      <a href="#domicilio-registro" class="nav-link">Ejemplo 5.3</a>
+      <a href="#registro-empleado" class="nav-link">Ejemplo 5.4</a>
+      <a href="#esfera-calculo" class="nav-link">PS 1.9</a>
+      <a href="#conteo-calificaciones" class="nav-link">PS 3.13</a>
+      <a href="#capital-interes" class="nav-link">PS 3.14</a>
+      <a href="#invertir-numero" class="nav-link">PS 3.42</a>   
+      <a href="#bisiestos-perfectos" class="nav-link">PS 4.14</a>
+      <a href="#teatro-reservas" class="nav-link">PS 4.30</a>
+    </nav>
+
+    <main class="exercises-main">
+      <article id="employee" class="exercise-card" aria-labelledby="employee-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+         <h2 id="sueldo-categoria-title">Calcular Aumento de Sueldo por Categoría (Ejemplo 2.8)</h2>
+          
+          <p class="exercise-description">
+            En este ejemplo, practicarás cómo leer datos del usuario (categoría y sueldo) y aplicar 
+            una lógica condicional múltiple usando una estructura <code>switch</code> para calcular un 
+            aumento salarial basado en una tabla de categorías.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Importar la clase <code>java.util.Scanner</code> para leer la entrada del usuario.</li>
+              <li>Solicitar y leer la <strong>categoría</strong> del trabajador (un número entero).</li>
+              <li>Solicitar y leer el <strong>sueldo</strong> actual del trabajador (un número <code>double</code>).</li>
+              <li>Utilizar una estructura <code>switch</code> para determinar el aumento basado en la categoría:
+                <ul>
+                  <li><strong>Categoría 1:</strong> Aumento del 15% (<code>sueldo * 0.15</code>).</li>
+                  <li><strong>Categoría 2:</strong> Aumento del 10% (<code>sueldo * 0.10</code>).</li>
+                  <li><strong>Categoría 3:</strong> Aumento del 8% (<code>sueldo * 0.08</code>).</li>
+                  <li><strong>Categoría 4:</strong> Aumento del 7% (<code>sueldo * 0.07</code>).</li>
+                </ul>
+              </li>
+              <li>Incluir un caso <code>default</code> para manejar categorías inválidas, mostrar un mensaje y terminar el programa.</li>
+              <li>Calcular el nuevo sueldo sumando el sueldo original más el aumento.</li>
+              <li>Imprimir la categoría del trabajador y su nuevo sueldo.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Asegúrate de:</p>
+            <ul>
+              <li>Usar <code>double</code> para el sueldo y el aumento para manejar decimales.</li>
+              <li>Incluir la sentencia <code>break;</code> al final de cada <code>case</code> para evitar que la ejecución continúe en los siguientes casos.</li>
+              <li>Manejar el caso <code>default</code> para evitar cálculos incorrectos si la categoría no es válida.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> La estructura <code>switch</code> es muy eficiente para cuando tienes múltiples condiciones <code>if-else if</code> que dependen del valor exacto de una sola variable.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+      <article id="person" class="exercise-card" aria-labelledby="person-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+         <h2 id="sueldo-horas-extras-title">Cálculo de Sueldo con Horas Extras (Problema 2.12)</h2>
+          
+          <p class="exercise-description">
+            Este ejemplo, basado en el Problema 2.12 del libro, calcula el pago total a un trabajador.
+            Implementa reglas de negocio para el pago de horas extras (<code>phe</code>) basadas en la categoría 
+            del empleado y aplica un límite máximo de 30 horas extras pagables.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer el sueldo base (<code>sue</code>), la categoría (<code>cate</code>) y las horas extras (<code>he</code>) del trabajador.</li>
+              <li>Determinar el pago por hora extra (<code>phe</code>) usando lógica condicional (<code>if-else if</code>) basado en la tabla:
+                <ul>
+                  <li><strong>Categoría 1:</strong> $30</li>
+                  <li><strong>Categoría 2:</strong> $38</li>
+                  <li><strong>Categoría 3:</strong> $50</li>
+                  <li><strong>Categoría 4:</strong> $70</li>
+                  <li><strong>Otra Categoría:</strong> $0</li>
+                </ul>
+              </li>
+              <li>Aplicar una regla de negocio para las horas extras: si <code>he > 30</code>, solo se deben pagar 30 horas.</li>
+              <li>Calcular el sueldo total (<code>mSue</code>) como: <code>sueldo base + (horas_a_pagar * phe)</code>.</li>
+              <li>Imprimir el monto total a pagar al trabajador.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Se usa una cadena <code>if-else if</code> para asignar el valor de <code>phe</code> (pago hora extra).</li>
+              <li>La regla de negocio <code>if (he > 30)</code> es crucial para aplicar el tope de 30 horas.</li>
+              <li>Las categorías que no son 1, 2, 3 o 4 reciben un <code>phe</code> de 0, tal como lo especifica el libro.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> El código añade un bucle <code>while(repetir)</code> que permite al usuario realizar múltiples cálculos sin tener que reiniciar el programa.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+      <article id="point2d" class="exercise-card" aria-labelledby="point2d-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="suma-serie-potencias-title">Calcular Suma de Serie (1¹ + 2² + ... + Nⁿ)</h2>
+          
+          <p class="exercise-description">
+            Este ejemplo, basado en el Problema 3.9 del libro, calcula el resultado de la serie 
+            matemática donde cada término <code>i</code> se eleva a su propia potencia (<code>i</code> elevado a <code>i</code>), 
+            sumando los resultados desde 1 hasta N.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Solicitar al usuario un número entero <code>N</code> que representa el total de términos de la serie.</li>
+              <li>Crear un método estático (<code>calcularSumaSerie</code>) que reciba <code>N</code>.</li>
+              <li>Usar un bucle <code>for</code> que itere desde <code>i = 1</code> hasta <code>N</code>.</li>
+              <li>En cada iteración, calcular la potencia <code>i</code> elevado a <code>i</code>. En Java, esto se hace con <code>Math.pow(i, i)</code>.</li>
+              <li>Acumular la suma de estas potencias en una variable (se recomienda <code>double</code>, ya que los resultados crecen muy rápido).</li>
+              <li>Imprimir el resultado total de la serie.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Es fundamental usar <code>double</code> para la variable suma, ya que el valor de <code>N^N</code> (ej. 10^10) supera rápidamente la capacidad de un <code>int</code> o <code>long</code>.</li>
+              <li>Se utiliza <code>Math.pow(base, exponente)</code> para calcular la potencia.</li>
+              <li>El problema implementa un bucle <code>for</code>, una estructura repetitiva (como se describe en el Capítulo 3 del libro).</li>
+              <li>Los métodos estáticos son parte de la programación estructurada y ayudan a modularizar el código.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+
+
+
+
+      <article id="freqtable" class="exercise-card" aria-labelledby="freqtable-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejercicio</span>
+          <h2 id="fibonacci-array-title">Almacenar los 100 primeros números Fibonacci (Ejemplo 4.6)</h2>
+          
+          <p class="exercise-description">
+            Este ejemplo, basado en el Problema Suplementario 4.6 (página 442) del libro, genera los
+            primeros 100 números de la secuencia Fibonacci y los guarda en un arreglo unidimensional.
+            Se utiliza <code>BigInteger</code> para manejar los números grandes.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear un arreglo (array) capaz de almacenar 100 elementos.</li>
+              <li>Usar la clase <code>java.math.BigInteger</code>, ya que los números Fibonacci crecen muy rápido y superan la capacidad de <code>long</code>.</li>
+              <li>Inicializar los dos primeros valores de la secuencia:
+                <ul>
+                  <li><code>fibonacci[0] = BigInteger.ZERO;</code> (0)</li>
+                  <li><code>fibonacci[1] = BigInteger.ONE;</code> (1)</li>
+                </ul>
+              </li>
+              <li>Usar un bucle <code>for</code> que itere desde <code>i = 2</code> hasta <code>99</code>.</li>
+              <li>En cada iteración, calcular el nuevo número sumando los dos anteriores: <code>fibonacci[i] = fibonacci[i-1].add(fibonacci[i-2]);</code></li>
+              <li>Al finalizar el cálculo, usar otro bucle <code>for</code> para imprimir el arreglo completo.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>El uso de <code>BigInteger</code> es obligatorio. El número Fibonacci <code>F(93)</code> ya es demasiado grande para un <code>long</code> de 64 bits en Java.</li>
+              <li><code>BigInteger</code> es una clase de Java, por lo que las operaciones aritméticas se hacen con métodos (ej. <code>.add()</code>) en lugar de operadores (<code>+</code>).</li>
+              <li>Este es un ejemplo clásico de "Arreglos Unidimensionales" (Capítulo 4 del libro).</li>
+              <li>El uso de arreglos y bucles es característico de la programación estructurada.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+      <article id="domicilio-registro" class="exercise-card" aria-labelledby="domicilio-registro-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="domicilio-registro-title">Registro de Domicilio con Variables (Ejemplo 5.3)</h2>
+          
+          <p class="exercise-description">
+            Este ejemplo, basado en el Ejemplo 5.3 del libro (Capítulo 5), muestra cómo almacenar
+            información de un domicilio usando <strong>variables simples</strong> y <strong>arreglos</strong>
+            en lugar de clases. Los datos (Strings e ints) se agrupan mediante variables individuales o arreglos.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+              <ul>
+                <li>En el método <code>main</code>, usar <code>Scanner</code> para solicitar y leer los cuatro datos del usuario:
+                  <ul>
+                    <li><code>String calle</code></li>
+                    <li><code>int numero</code></li>
+                    <li><code>String ciudad</code></li>
+                    <li><code>String pais</code></li>
+                  </ul>
+                </li>
+                <li>Almacenar los datos en variables simples o en un arreglo.</li>
+                <li>Opcionalmente, crear métodos estáticos auxiliares para leer datos y mostrar resultados (mantiene programación estructurada).</li>
+                <li>Imprimir los datos ingresados por el usuario de forma clara.</li>
+                <li><strong>Nota:</strong> En programación estructurada no se usan clases personalizadas ni objetos. Los datos se manejan con variables, arreglos y funciones/métodos estáticos.</li>
+              </ul>
+                          
+            <h3>Ejemplo de uso esperado</h3>
+         <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>El concepto de <strong>Registro</strong> (página 343 del libro) se implementa aquí usando <strong>variables simples</strong> en lugar de clases.</li>
+              <li>Se usa <code>scanner.nextLine()</code> después de <code>scanner.nextInt()</code> para consumir el salto de línea pendiente y evitar errores al leer el siguiente <code>String</code>.</li>
+              <li>Esta implementación mantiene la programación estructurada al evitar la creación de objetos personalizados.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+      <article id="registro-empleado" class="exercise-card" aria-labelledby="registro-empleado-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="registro-empleado-title">Registro de Empleados con Arreglos (Ejemplo 5.4)</h2>
+          
+          <p class="exercise-description">
+            Implementación del Ejemplo 5.4 del libro (página 345). Este código muestra cómo almacenar 
+            información de empleados usando <strong>arreglos paralelos</strong> o <strong>variables individuales</strong>
+            en lugar de clases, asignando valores directamente a las estructuras de datos.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+           <h3>Requisitos</h3>
+              <ul>
+                <li>Definir variables para almacenar los datos de dos empleados con los siguientes campos:
+                  <ul>
+                    <li><code>int numero</code></li>
+                    <li><code>String nombre</code></li>
+                    <li><code>String departamento</code></li>
+                    <li><code>int nivel</code></li>
+                    <li><code>double sueldo</code></li>
+                  </ul>
+                </li>
+                <li>Usar arreglos paralelos o variables individuales para almacenar los datos de cada empleado.</li>
+                <li>Asignar valores directamente a las variables de cada empleado.</li>
+                <li>Opcionalmente, crear métodos estáticos auxiliares para mostrar los datos de un empleado.</li>
+                <li>Imprimir todos los datos de ambos empleados en la consola.</li>
+                <li><strong>Nota:</strong> En programación estructurada no se usan clases personalizadas ni objetos. Los datos se manejan con variables, arreglos y funciones/métodos estáticos.</li>
+              </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+           <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Esto implementa el <strong>Registro EMPLEADO</strong> (página 345 del libro) usando <strong>arreglos paralelos</strong>.</li>
+              <li>Los arreglos paralelos mantienen sincronizados los datos de cada empleado usando el mismo índice.</li>
+              <li>A diferencia de POO, aquí se usan estructuras de datos simples (arreglos) y métodos estáticos.</li>
+              <li>Esta es una técnica común en programación estructurada para agrupar datos relacionados.</li>
+            </ul>
+            
+            <div class="tip-box">
+              <strong>Tip:</strong> Los arreglos paralelos son útiles cuando necesitas almacenar múltiples atributos de varios elementos sin usar objetos.
+            </div>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+      <article id="esfera-calculo" class="exercise-card" aria-labelledby="esfera-calculo-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="esfera-calculo-title">Calcular Área y Volumen de Esfera (PS 1.9)</h2>
+          
+          <p class="exercise-description">
+            Implementación del Problema Suplementario 1.9 (página 404). Este ejemplo
+            lee el radio de una esfera y calcula su área y volumen usando las fórmulas matemáticas
+            correspondientes (Fórmulas 6.7 y 6.8 del libro).
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Solicitar al usuario el radio de la esfera (<code>double radio</code>).</li>
+              <li>Usar la constante <code>Math.PI</code> para el valor de $\pi$.</li>
+              <li>Usar <code>Math.pow(base, exponente)</code> para calcular las potencias del radio.</li>
+              <li>Calcular el área (Fórmula 6.7): <code>4 * Math.PI * Math.pow(radio, 2)</code>.</li>
+              <li>Calcular el volumen (Fórmula 6.8): <code>(4.0 / 3.0) * Math.PI * Math.pow(radio, 3)</code>.</li>
+              <li>Imprimir los resultados de área y volumen.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+           <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Este problema implementa las Fórmulas 6.7 y 6.8 (página 405 del libro).</li>
+              <li>Es importante usar <code>4.0 / 3.0</code> (división de tipo <code>double</code>) en lugar de <code>4 / 3</code> (división de enteros), ya que <code>4 / 3</code> resultaría en <code>1</code>.</li>
+              <li>La clase <code>Math</code> de Java provee constantes (<code>PI</code>) y métodos (<code>pow</code>) muy útiles para cálculos científicos.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+
+
+      <article id="conteo-calificaciones" class="exercise-card" aria-labelledby="conteo-calificaciones-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="conteo-calificaciones-title">Conteo de Calificaciones por Rango (PS 3.13)</h2>
+          
+          <p class="exercise-description">
+            Implementación del Problema Suplementario 3.13 (página 422). Este programa lee
+            calificaciones una por una hasta que el usuario ingresa <code>-1</code>. 
+            Luego, muestra cuántas calificaciones cayeron en cuatro rangos predefinidos.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Solicitar al usuario que ingrese calificaciones (<code>double</code>).</li>
+              <li>Usar un bucle <code>while</code> que se repita mientras la calificación sea diferente de <code>-1</code>. El <code>-1</code> es el valor centinela que indica el fin de los datos.</li>
+              <li>Utilizar cuatro variables (<code>conteo1</code>, <code>conteo2</code>, <code>conteo3</code>, <code>conteo4</code>) para contar las calificaciones en cada rango.</li>
+              <li>Clasificar cada calificación usando <code>if-else if</code> en los rangos:
+                <ul>
+                  <li>Rango 1: 0 a 3.99</li>
+                  <li>Rango 2: 4 a 5.99</li>
+                  <li>Rango 3: 6 a 7.99</li>
+                  <li>Rango 4: 8 a 10</li>
+                </ul>
+              </li>
+              <li>Al final del bucle, imprimir los totales de cada contador.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Este problema utiliza la estructura repetitiva <strong>mientras (<code>while</code>)</strong>, ideal para cuando no se sabe cuántos datos se ingresarán.</li>
+              <li>El valor <code>-1</code> se conoce como <strong>centinela</strong>. Es una técnica común para finalizar bucles de entrada de datos.</li>
+              <li>Los contadores se inicializan en 0 y se incrementan con <code>++</code> cada vez que se encuentra una calificación en el rango correspondiente.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+
+      <article id="capital-interes" class="exercise-card" aria-labelledby="capital-interes-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="capital-interes-title">Calcular Inversión con Interés Mensual (PS 3.14)</h2>
+          
+          <p class="exercise-description">
+            Implementación del Problema Suplementario 3.14 (página 422). Este programa calcula el 
+            monto final de una inversión después de N meses, aplicando una tasa de interés 
+            diferente para cada mes.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Solicitar al usuario el número de meses (<code>int meses</code>).</li>
+              <li>Solicitar el capital inicial (<code>double capIni</code>).</li>
+              <li>Crear un arreglo de tipo <code>double</code> (<code>tasas</code>) del tamaño de <code>meses</code>.</li>
+              <li>Usar un bucle <code>for</code> para pedir y almacenar cada una de las tasas de interés mensuales en el arreglo.</li>
+              <li>Crear un método estático (<code>calcularMonto</code>) que reciba el capital inicial y el arreglo de tasas.</li>
+              <li>Dentro del método, usar un bucle (<code>for-each</code>) para iterar sobre las tasas y aplicar el interés compuesto mes a mes: <code>montoFinal += montoFinal * tasa</code>.</li>
+              <li>Imprimir el monto final de la inversión.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+         <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>El problema combina el uso de arreglos (para las tasas) con bucles (para leerlas y calcularlas).</li>
+              <li>La fórmula <code>montoFinal += montoFinal * tasa</code> es una forma abreviada de <code>montoFinal = montoFinal * (1 + tasa)</code>, que calcula correctamente el interés compuesto para cada período.</li>
+              <li>El uso de métodos estáticos para modularizar el cálculo es una buena práctica en programación estructurada.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+      <article id="invertir-numero" class="exercise-card" aria-labelledby="invertir-numero-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="invertir-numero-title">Invertir un Número Entero (PS 3.42)</h2>
+          
+          <p class="exercise-description">
+            Implementación del algoritmo del Problema Suplementario 3.42 (página 438).
+            Este programa lee un número entero positivo y, mediante un bucle <code>while</code>,
+            invierte el orden de sus dígitos usando operaciones de módulo y división.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Leer un número entero <code>n</code> del usuario.</li>
+              <li>Inicializar dos variables enteras, <code>x = 0</code> y <code>k = 0</code>.</li>
+              <li>Validar que <code>n > 0</code>.</li>
+              <li>Usar un bucle <code>while (n > 0)</code> para procesar el número.</li>
+              <li>Dentro del bucle:
+                <ul>
+                  <li>Obtener el último dígito de <code>n</code>: <code>k = n % 10;</code></li>
+                  <li>Añadir ese dígito al inicio de <code>x</code>: <code>x = x * 10 + k;</code></li>
+                  <li>Eliminar el último dígito de <code>n</code>: <code>n = n / 10;</code></li>
+                </ul>
+              </li>
+              <li>Al finalizar el bucle, imprimir los valores finales de las variables <code>k</code>, <code>x</code>, y <code>n</code>.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+          <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Esta es la técnica algorítmica estándar para <strong>invertir un número</strong>.</li>
+              <li>El valor <code>n % 10</code> (módulo 10) siempre obtiene el último dígito.</li>
+              <li>El valor <code>n / 10</code> (división entera) siempre elimina el último dígito.</li>
+              <li>El diagrama de flujo 6.1 del libro (PS 3.42) pide imprimir <code>X</code>, que es el número invertido.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+
+      <article id="bisiestos-perfectos" class="exercise-card" aria-labelledby="bisiestos-perfectos-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="bisiestos-perfectos-title">Encontrar Años Bisiestos y Perfectos (PS 4.14)</h2>
+          
+          <p class="exercise-description">
+            Implementación del Problema Suplementario 4.14 (página 445). Este programa
+            itera todos los números desde 1 hasta 2020, determina si cada número es un año bisiesto
+            y/o un número perfecto, y almacena los resultados en arreglos separados.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Iterar en un bucle <code>for</code> desde <code>year = 1</code> hasta <code>2020</code>.</li>
+              <li>Crear un método estático <code>esBisiesto(int year)</code> que devuelva <code>true</code> si el año cumple la regla:
+                <ul>
+                  <li>(Es divisible por 4 Y no por 100) O (Es divisible por 400).</li>
+                </ul>
+              </li>
+              <li>Crear un método estático <code>esPerfecto(int num)</code> que devuelva <code>true</code> si la suma de sus divisores (excepto él mismo) es igual a <code>num</code>.
+                <ul>
+                  <li>Ej. 6 es perfecto (1 + 2 + 3 = 6).</li>
+                </ul>
+              </li>
+              <li>Crear dos arreglos (ej. <code>bisiestos</code> y <code>perfectos</code>) para almacenar los números que cumplan la condición.</li>
+              <li>Usar contadores para gestionar el índice de los arreglos.</li>
+              <li>Al final, imprimir el contenido de ambos arreglos.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+        <textarea id="java-editor" ></textarea>
+          </section>
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Los arreglos <code>bisiestos</code> y <code>perfectos</code> se inicializan con un tamaño grande (2020), aunque se podrían optimizar.</li>
+              <li>Se usan contadores (<code>contadorBisiestos</code>) para imprimir solo las posiciones del arreglo que sí se llenaron.</li>
+              <li>El método <code>esPerfecto</code> busca divisores solo hasta <code>num / 2</code>, lo cual es una optimización correcta.</li>
+              <li>Los métodos estáticos permiten modularizar el código manteniendo la programación estructurada.</li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+
+
+
+
+
+
+
+
+      <article id="teatro-reservas" class="exercise-card" aria-labelledby="teatro-reservas-title">
+        <header class="exercise-header">
+          <span class="exercise-badge">Ejemplo</span>
+          <h2 id="teatro-reservas-title">Manejar Reservas de Teatro (PS 4.30)</h2>
+          
+          <p class="exercise-description">
+            Implementación del Problema Suplementario 4.30 (página 452). Este programa simula un
+            sistema de reservas para un teatro con 26 filas (A-Z) y 10 asientos (1-10), usando 
+            un arreglo bidimensional (matriz) para almacenar el nombre del cliente en el asiento reservado.
+          </p>
+        </header>
+        
+        <div class="exercise-content">
+          <section class="exercise-main">
+            <h3>Requisitos</h3>
+            <ul>
+              <li>Crear un arreglo bidimensional (<code>String[26][10]</code>) para representar el teatro.</li>
+              <li>Inicializar todos los asientos como vacíos (ej. <code>""</code>).</li>
+              <li>Crear un bucle que solicite al usuario una fila (A-Z) y un número de asiento (1-10).</li>
+              <li>Validar que la fila y el número estén en el rango correcto.</li>
+              <li>Convertir la entrada del usuario (ej. Fila 'C', Asiento 3) a índices de arreglo (ej. <code>[2][2]</code>).</li>
+              <li>Verificar si el asiento elegido está disponible (si es <code>""</code>).</li>
+              <li>Si está ocupado, mostrar un mensaje y volver a pedir.</li>
+              <li>Si está disponible, solicitar el nombre del cliente y asignarlo al asiento en el arreglo.</li>
+              <li>Crear un método estático para verificar si el teatro está lleno.</li>
+            </ul>
+            
+            <h3>Ejemplo de uso esperado</h3>
+            <textarea id="java-editor" ></textarea>
+
+
+
+          </section>
+          
+          
+          <aside class="exercise-sidebar">
+            <h3>Notas rápidas</h3>
+            <p class="note-text">Puntos clave de este ejemplo:</p>
+            <ul>
+              <li>Este es un ejemplo de "Arreglos Bidimensionales" (página 446 del libro).</li>
+              <li>La conversión de la fila <code>char</code> a índice <code>int</code> se logra restando el valor ASCII de 'A': <code>int indiceFila = fila - 'A';</code></li>
+              <li>La conversión del asiento <code>int</code> a índice <code>int</code> se logra restando 1: <code>int indiceColumna = numero - 1;</code></li>
+            </ul>
+          </aside>
+        </div>
+      </article>
+    </main>
+
+    <footer class="page-footer">
+      <p class="note-text">Regresa al <a href="#top">menú</a> para elegir otro ejercicio.</p>
+    </footer>
+    <p>Hola mundo</p>
+  </div>
+</body>
+</html>
